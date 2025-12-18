@@ -28,7 +28,7 @@ npx playwright test --ui
 
 # Part 2 – API Automation (Karate)
 
-This module contains backend-style API tests for the functionality using **Karate**.
+This module contains API tests for the transfer functionality using **Karate**.
 
 ---
 
@@ -48,7 +48,7 @@ To still perform meaningful API automation, a local API stub has been implemente
 POST /api/transfer
 ```
 
-## Stub the APIs:
+## Run API Stub:
 ```bash
 cd api-stub
 npm install
