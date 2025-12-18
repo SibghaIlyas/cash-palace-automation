@@ -9,11 +9,6 @@ export class DashboardPage {
     return parseMoney(balanceText);
   }
 
-  async openTransfer() {
-    await this.page.getByRole("link", { name: /transfer/i }).click();
-    await expect(this.page.getByRole("heading", { name: /transfer/i })).toBeVisible();
-  }
-
   async recentTransactionsTable() {
     return this.page.getByTestId("transactions-title").textContent();
   }
