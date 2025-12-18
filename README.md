@@ -26,7 +26,7 @@ npx playwright test
 npx playwright test --ui
 ```
 
-# Part 2 – API Automation (Karate)
+## Part 2 – API Automation (Karate)
 
 This module contains API tests for the transfer functionality using **Karate**.
 
