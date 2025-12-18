@@ -1,0 +1,11 @@
+{
+    "message": "#string",
+    "transaction":
+    {
+        "id": "#string",
+        "date": "##string",
+        "description": "#string",
+        "amount": "#number",
+        "status": "#string"
+    }   
+}

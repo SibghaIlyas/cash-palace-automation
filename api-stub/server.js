@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 
 const app = express();
 app.use(express.json());
@@ -18,7 +18,7 @@ app.get("/health", (_req, res) => res.status(200).json({ ok: true }));
 app.post("/api/transfer", (req, res) => {
   const { recipientName, amount } = req.body || {};
 
-  // validation (robust + clear errors)
+  // validation 
   if (typeof recipientName !== "string" || !recipientName.trim()) {
     return res.status(400).json({ message: "recipientName is required" });
   }
@@ -33,7 +33,7 @@ app.post("/api/transfer", (req, res) => {
   const dd = String(today.getDate()).padStart(2, "0");
   const isoDate = `${yyyy}-${mm}-${dd}`;
 
-  // mimic Mirage behavior you observed: amount becomes negative for a transfer
+  // mimic API
   const transaction = {
     id,
     date: isoDate,

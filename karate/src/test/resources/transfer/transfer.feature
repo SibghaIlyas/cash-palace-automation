@@ -6,8 +6,8 @@ Background:
   * configure headers = { 'Content-Type': 'application/json' }
 
 Scenario: Create a transfer and verify transaction details
-  * def recipientName = 'qe'
-  * def amount = 231
+  * def recipientName = 'test-user'
+  * def amount = 50
 
   Given request
   """
@@ -17,21 +17,10 @@ Scenario: Create a transfer and verify transaction details
   Then status 201
 
   # schema check
-  And match response ==
-  """
-  {
-    message: 'Transfer successful',
-    transaction: {
-      id: '#string',
-      date: '#regex \\d{4}-\\d{2}-\\d{2}',
-      description: '#string',
-      amount: '#number',
-      status: '#string'
-    }
-  }
-  """
+  And match response == read('transfer-schema.json')
 
-  # business rules (matches Mirage behavior you observed)
+  # business rules
+  And match response.message == 'Transfer successful'
   And match response.transaction.description == 'Transfer to ' + recipientName
   And match response.transaction.amount == -amount
   And match response.transaction.status == 'pending'
